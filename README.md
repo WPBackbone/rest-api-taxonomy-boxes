@@ -1,11 +1,11 @@
 # REST API TaxBoxes
 
-Update the default WordPress TaxBoxes to use Backbone and the REST API.
+Update the default WordPress Taxonomy Meta Boxes to use Backbone.js and the REST API.
 
 ## How It Works
 
-1. Replace the default WordPress TaxBoxes with Backbone views
-2. Use the Backbone JS Client and REST API to manipulate terms
+1. Replace the default WordPress Taxonomy Meta Boxes with Backbone.js views
+2. Use the Backbone.js Client and REST API to manipulate terms.
 
 ## Installation
 
