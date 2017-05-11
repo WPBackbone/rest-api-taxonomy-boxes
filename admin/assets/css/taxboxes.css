@@ -1,0 +1,31 @@
+.clearfix:after {
+	clear: both;
+	content: '';
+	display: table;
+}
+
+.categorydiv .category-panels.all .tab-pop,
+.categorydiv .category-panels.popular .tab-all {
+	background-color: #fdfdfd;
+	border: 1px solid #ddd;
+	border-bottom-color: #fdfdfd;
+}
+
+.categorydiv .category-panels.all .tab-pop a,
+.categorydiv .category-panels.popular .tab-all a {
+	color: #32373c;
+}
+
+.categorydiv .category-panels.all .panel-pop,
+.categorydiv .category-panels.popular .panel-all {
+	display: none;
+}
+
+.categorydiv .category-tabs {
+	margin-bottom: -2px;
+	max-width: 100%;
+	padding: 8px 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
