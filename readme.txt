@@ -17,7 +17,7 @@ RATB is a plugin serving two purpose: offering new features to extend the usage 
 
 RATB is a plugin meant to make it easy to use the REST API with taxonomies meta boxes using the Backbone.js client. Through extensive use of the combined REST API and Backbone.js client to interact with the API RATB basically replace the default taxonomies meta boxes with a Backbone.js powered set of views replicating the original meta boxes contents.
 
-RATB provides a JavaScript API to easily manage terms programmatically: create and delete terms, save terms collections, reload meta boxes... Examples can be found on the [official website](https://talyes.in/rest-api-taxboxes).
+RATB provides a JavaScript API to easily manage terms programmatically: create and delete terms, save terms collections, reload meta boxes... Examples can be found on the [official website](https://talyes.in/rest-api-taxonomy-boxes/).
 
 = TL;DR =
 
@@ -29,26 +29,23 @@ RATB provides a JavaScript API to easily manage terms programmatically: create a
 = Using The WordPress Dashboard =
 
 1. Navigate to the 'Add New' Plugin Dashboard
-2. Select `rest-api-taxboxes.zip` from your computer
+2. Select `rest-api-taxonomy-boxes.zip` from your computer
 3. Upload
 4. Activate the plugin on the WordPress Plugin Dashboard
 
 = Using FTP =
 
-1. Extract `rest-api-taxboxes.zip` to your computer
-2. Upload the `rest-api-taxboxes.zip` directory to your `wp-content/plugins` directory
+1. Extract `rest-api-taxonomy-boxes.zip` to your computer
+2. Upload the `rest-api-taxonomy-boxes.zip` directory to your `wp-content/plugins` directory
 3. Activate the plugin on the WordPress Plugins Dashboard
+
+== Screenshots ==
 
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
 
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
+== Upgrade Notice == 
 
 
 == Changelog ==
