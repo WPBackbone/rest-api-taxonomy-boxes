@@ -63,7 +63,7 @@ window.taxBoxes = window.taxBoxes || {};
 	_.extend( taxBox.prototype, {
 
 		/**
-		 * Retrieve a specific term.
+		 * Retrieve a specific term by its ID.
 		 *
 		 * @since 1.0
 		 *
@@ -78,6 +78,20 @@ window.taxBoxes = window.taxBoxes || {};
 			}
 
 			return false;
+		},
+
+		/**
+		 * Check if a specific term exists.
+		 *
+		 * @since 1.0
+		 *
+		 * @param {int} term_id Term ID.
+		 *
+		 * @return {boolean}
+		 */
+		has : function( term_id ) {
+
+			return this.controller.terms.has( term_id );
 		},
 
 		/**
