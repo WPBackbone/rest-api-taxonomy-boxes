@@ -1,12 +1,12 @@
 <?php
 /**
- * REST API: \RestApiTaxBoxes\REST\Terms_Controller class.
+ * REST API: \RestApiTaxonomyBoxes\REST\Terms_Controller class.
  *
- * @package RestApiTaxBoxes\REST
+ * @package RestApiTaxonomyBoxes\REST
  * @since 1.0.0
  */
 
-namespace RestApiTaxBoxes\REST;
+namespace RestApiTaxonomyBoxes\REST;
 
 use WP_REST_Server;
 use WP_REST_Terms_Controller;

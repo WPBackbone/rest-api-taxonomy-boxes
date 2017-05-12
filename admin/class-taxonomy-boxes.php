@@ -1,15 +1,15 @@
 <?php
 /**
- * RestApiTaxBoxes: \RestApiTaxBoxes\TaxBoxes class.
+ * TaxonomyBoxes: \RestApiTaxonomyBoxes\TaxBoxes class.
  *
- * @package RestApiTaxBoxes\Admin
+ * @package RestApiTaxonomyBoxes\Admin
  * @since   1.0
  */
 
-namespace RestApiTaxBoxes\Admin;
+namespace RestApiTaxonomyBoxes\Admin;
 
 use WP_REST_Server;
-use RestApiTaxBoxes\REST;
+use RestApiTaxonomyBoxes\REST;
 
 /**
  * Replace the core taxonomies meta boxes to use Backbone REST API client.
@@ -20,7 +20,7 @@ use RestApiTaxBoxes\REST;
  * @since 1.0
  * @access public
  */
-class TaxBoxes {
+class TaxonomyBoxes {
 
 	/**
 	 * Initialize.

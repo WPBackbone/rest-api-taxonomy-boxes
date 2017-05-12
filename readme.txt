@@ -17,7 +17,7 @@ RATB is a plugin serving two purpose: offering new features to extend the usage 
 
 RATB is a plugin meant to make it easy to use the REST API with taxonomies meta boxes using the Backbone.js client. Through extensive use of the combined REST API and Backbone.js client to interact with the API RATB basically replace the default taxonomies meta boxes with a Backbone.js powered set of views replicating the original meta boxes contents.
 
-RATB provides a JavaScript API to easily manage terms programmatically: create and delete terms, save terms collections, reload meta boxes... Examples can be found on the [official website](https://talyes.in/rest-api-taxonomy-boxes/).
+RATB provides a JavaScript API to easily manage terms programmatically: create and delete terms, save terms collections, reload meta boxes... More information can be found on the [official website](https://talyes.in/rest-api-taxonomy-boxes/).
 
 = TL;DR =
 
