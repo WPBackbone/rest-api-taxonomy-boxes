@@ -2,8 +2,8 @@
 Contributors: talyesin
 Tags: rest api, taxonomies, dashboard
 Requires at least: 4.7
-Tested up to: 4.7.4
-Stable tag: 1.0.0
+Tested up to: 4.7.5
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,6 +49,11 @@ RATB provides a JavaScript API to easily manage terms programmatically: create a
 
 
 == Changelog ==
+
+= 1.1 =
+* Make plugin embeddable.
+* Fix hierarchical taxonomies refresh.
+* Fix hierarchical taxonomies meta boxes tabs CSS.
 
 = 1.0 =
 * First release.

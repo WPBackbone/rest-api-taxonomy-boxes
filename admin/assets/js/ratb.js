@@ -1,11 +1,11 @@
 /**
- * Build the TaxBoxes object.
+ * Build the TaxonomyBoxes object.
  *
  * @since 1.0
  * @access public
  */
 
-window.taxBoxes = window.taxBoxes || {};
+window.taxonomyBoxes = window.taxonomyBoxes || {};
 
 ( function( $ ) {
 
@@ -29,9 +29,9 @@ window.taxBoxes = window.taxBoxes || {};
 
 			el = document.querySelector( '#' + taxonomy.slug + 'div .inside' );
 
-			controller = new taxBoxes.controller.categoryBox( options );
+			controller = new taxonomyBoxes.controller.categoryBox( options );
 
-			view = new taxBoxes.view.category.Box({
+			view = new taxonomyBoxes.view.category.Box({
 				el         : el,
 				controller : controller
 			});
@@ -40,9 +40,9 @@ window.taxBoxes = window.taxBoxes || {};
 
 			el = document.querySelector( '#tagsdiv-' + taxonomy.slug + ' .inside' );
 
-			controller = new taxBoxes.controller.tagBox( options );
+			controller = new taxonomyBoxes.controller.tagBox( options );
 
-			view = new taxBoxes.view.tag.Box({
+			view = new taxonomyBoxes.view.tag.Box({
 				el         : el,
 				controller : controller
 			});
@@ -338,21 +338,21 @@ window.taxBoxes = window.taxBoxes || {};
 		 */
 		save : function( options ) {
 
-			if ( ! taxBoxes.post ) {
-				var modelClass = taxBoxes.utils.getApiModelClass( typenow || '' );
+			if ( ! taxonomyBoxes.post ) {
+				var modelClass = taxonomyBoxes.utils.getApiModelClass( typenow || '' );
 				if ( ! modelClass ) {
 					return false;
 				}
 
-				taxBoxes.post = new modelClass({
+				taxonomyBoxes.post = new modelClass({
 					id : this.controller.get( 'post_id' )
 				});
 			}
 
 			if ( 'category' === this.taxonomy.slug ) {
-				taxBoxes.post.setCategoriesWithCollection( this.controller.selected );
+				taxonomyBoxes.post.setCategoriesWithCollection( this.controller.selected );
 			} else if ( 'post_tag' === this.taxonomy.slug ) {
-				taxBoxes.post.setTagsWithCollection( this.controller.selected );
+				taxonomyBoxes.post.setTagsWithCollection( this.controller.selected );
 			}
 
 			return this;
@@ -385,24 +385,24 @@ window.taxBoxes = window.taxBoxes || {};
 
 			var taxonomy = _.clone( this.taxonomy );
 
-			return taxBoxes.boxes[ taxonomy.slug ] = new taxBox( taxonomy );
+			return taxonomyBoxes.boxes[ taxonomy.slug ] = new taxBox( taxonomy );
 		},
 
 	} );
 
 	/**
-	 * TaxBoxes Wrapper.
+	 * TaxonomyBoxes Wrapper.
 	 *
 	 * Store controllers, views and boxes objects.
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes = {
+	taxonomyBoxes = {
 
 		/**
 		 * List of taxonomies boxes instance.
 		 *
-		 * This should not be used directly. Use taxBoxes.get()
+		 * This should not be used directly. Use taxonomyBoxes.get()
 		 * instead.
 		 *
 		 * @since 1.0
@@ -430,7 +430,7 @@ window.taxBoxes = window.taxBoxes || {};
 		view : {},
 
 		/**
-		 * TaxBoxes util functions.
+		 * TaxonomyBoxes util functions.
 		 *
 		 * @since 1.0
 		 *
@@ -514,7 +514,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.controller.taxonomyBox = Backbone.Model.extend({
+	taxonomyBoxes.controller.taxonomyBox = Backbone.Model.extend({
 
 		/**
 		 * Let know we're ready to roll.
@@ -540,7 +540,7 @@ window.taxBoxes = window.taxBoxes || {};
 		 */
 		setCollections : function() {
 
-			var collectionClass = taxBoxes.utils.getApiCollectionClass( this.get( 'taxonomy' ).rest_base );
+			var collectionClass = taxonomyBoxes.utils.getApiCollectionClass( this.get( 'taxonomy' ).rest_base );
 			if ( ! collectionClass ) {
 				return;
 			}
@@ -668,7 +668,7 @@ window.taxBoxes = window.taxBoxes || {};
 		 */
 		createNewTerm : function( term ) {
 
-			var modelClass = taxBoxes.utils.getApiModelClass( this.get( 'taxonomy' ).slug );
+			var modelClass = taxonomyBoxes.utils.getApiModelClass( this.get( 'taxonomy' ).slug );
 			if ( ! modelClass ) {
 				return;
 			}
@@ -731,7 +731,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.controller.categoryBox = taxBoxes.controller.taxonomyBox.extend({
+	taxonomyBoxes.controller.categoryBox = taxonomyBoxes.controller.taxonomyBox.extend({
 
 		/**
 		 * Initialize the Controller.
@@ -829,7 +829,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.controller.tagBox = taxBoxes.controller.taxonomyBox.extend({
+	taxonomyBoxes.controller.tagBox = taxonomyBoxes.controller.taxonomyBox.extend({
 
 		/**
 		 * Initialize the Controller.
@@ -858,7 +858,7 @@ window.taxBoxes = window.taxBoxes || {};
 		 */
 		setCollections : function() {
 
-			taxBoxes.controller.taxonomyBox.prototype.setCollections.apply( this, arguments );
+			taxonomyBoxes.controller.taxonomyBox.prototype.setCollections.apply( this, arguments );
 
 			this.selected.comparator = '';
 
@@ -922,14 +922,14 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.category = {};
+	taxonomyBoxes.view.category = {};
 
 	/**
 	 * All Terms Panel Subview.
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.category.Panel = wp.Backbone.View.extend({
+	taxonomyBoxes.view.category.Panel = wp.Backbone.View.extend({
 
 		events : {
 			'click input[type="checkbox"]' : 'setSelected'
@@ -1031,7 +1031,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.category.Terms = taxBoxes.view.category.Panel.extend({
+	taxonomyBoxes.view.category.Terms = taxonomyBoxes.view.category.Panel.extend({
 
 		template : wp.template( 'categorydiv-terms' ),
 
@@ -1050,9 +1050,10 @@ window.taxBoxes = window.taxBoxes || {};
 		 */
 		initialize : function( options ) {
 
-			taxBoxes.view.category.Panel.prototype.initialize.apply( this, arguments );
+			taxonomyBoxes.view.category.Panel.prototype.initialize.apply( this, arguments );
 
 			this.collection = this.controller.terms;
+			this.taxonomy   = this.controller.taxonomy;
 
 			this.listenTo( this.collection, 'update', this.render );
 			this.listenTo( this.selected,   'update', this.render );
@@ -1080,8 +1081,8 @@ window.taxBoxes = window.taxBoxes || {};
 
 				if ( ! this.selected.has( child.get( 'parent' ) ) ) {
 
-					var $item = this.$( '#category-' + child.get( 'id' ) ),
-					$parent = this.$( '#category-' + child.get( 'parent' ) );
+					var $item = this.$( '#' + child.get( 'taxonomy' ) + '-' + child.get( 'id' ) ),
+					$parent = this.$( '#' + child.get( 'taxonomy' ) + '-' + child.get( 'parent' ) );
 
 					if ( ! $parent.find( 'ul.children' ).length ) {
 						$parent.append( '<ul class="children"></ul>' );
@@ -1110,8 +1111,8 @@ window.taxBoxes = window.taxBoxes || {};
 			var selected = _.clone( this.selected.models );
 			_.each( selected.reverse(), function( term ) {
 
-				var $item = this.$( '#category-' + term.get( 'id' ) ),
-				    $list = this.$( '#categorychecklist' );
+				var $item = this.$( '#' + term.get( 'taxonomy' ) + '-' + term.get( 'id' ) ),
+				    $list = this.$( '#' + term.get( 'taxonomy' ) + 'checklist' );
 
 				$list.prepend( $item );
 
@@ -1152,7 +1153,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.category.Popular = taxBoxes.view.category.Panel.extend({
+	taxonomyBoxes.view.category.Popular = taxonomyBoxes.view.category.Panel.extend({
 
 		template : wp.template( 'categorydiv-popular' ),
 
@@ -1171,7 +1172,7 @@ window.taxBoxes = window.taxBoxes || {};
 		 */
 		initialize : function( options ) {
 
-			taxBoxes.view.category.Panel.prototype.initialize.apply( this, arguments );
+			taxonomyBoxes.view.category.Panel.prototype.initialize.apply( this, arguments );
 
 			this.collection = this.controller.popular;
 
@@ -1207,7 +1208,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.category.Panels = wp.Backbone.View.extend({
+	taxonomyBoxes.view.category.Panels = wp.Backbone.View.extend({
 
 		className : 'category-panels all',
 
@@ -1241,8 +1242,8 @@ window.taxBoxes = window.taxBoxes || {};
 		 */
 		setRegions : function() {
 
-			this.terms = new taxBoxes.view.category.Terms( { controller : this.controller } );
-			this.popular = new taxBoxes.view.category.Popular( { controller : this.controller } );
+			this.terms = new taxonomyBoxes.view.category.Terms( { controller : this.controller } );
+			this.popular = new taxonomyBoxes.view.category.Popular( { controller : this.controller } );
 
 			this.views.set( '.panel-all', this.terms );
 			this.views.set( '.panel-pop', this.popular );
@@ -1304,9 +1305,9 @@ window.taxBoxes = window.taxBoxes || {};
 			var options = _.extend( options || {}, {
 				taxonomy : taxonomy,
 				labels   : _.extend(
-					taxLabelsL10n[ taxonomy.slug ] || {}, {
-						add       : taxLabelsL10n.add || '',
-						most_used : taxLabelsL10n.most_used || ''
+					ratbLabelsL10n[ taxonomy.slug ] || {}, {
+						add       : ratbLabelsL10n.add || '',
+						most_used : ratbLabelsL10n.most_used || ''
 					}
 				)
 			} );
@@ -1347,7 +1348,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.category.AddNew = wp.Backbone.View.extend({
+	taxonomyBoxes.view.category.AddNew = wp.Backbone.View.extend({
 
 		className : 'wp-hidden-children',
 
@@ -1485,9 +1486,9 @@ window.taxBoxes = window.taxBoxes || {};
 				taxonomy : taxonomy,
 				terms    : terms,
 				labels   : _.extend(
-					taxLabelsL10n[ taxonomy.slug ] || {}, {
-						add       : taxLabelsL10n.add || '',
-						most_used : taxLabelsL10n.most_used || ''
+					ratbLabelsL10n[ taxonomy.slug ] || {}, {
+						add       : ratbLabelsL10n.add || '',
+						most_used : ratbLabelsL10n.most_used || ''
 					}
 				)
 			} );
@@ -1523,7 +1524,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.category.Box = wp.Backbone.View.extend({
+	taxonomyBoxes.view.category.Box = wp.Backbone.View.extend({
 
 		events : {
 			'click #category-tabs a' : 'switchTabs',
@@ -1556,8 +1557,8 @@ window.taxBoxes = window.taxBoxes || {};
 		 */
 		setRegions : function() {
 
-			this.panels = new taxBoxes.view.category.Panels( { controller : this.controller } );
-			this.addnew = new taxBoxes.view.category.AddNew( { controller : this.controller } );
+			this.panels = new taxonomyBoxes.view.category.Panels( { controller : this.controller } );
+			this.addnew = new taxonomyBoxes.view.category.AddNew( { controller : this.controller } );
 
 			this.views.add( '.categorydiv', this.panels );
 			this.views.add( '.categorydiv', this.addnew );
@@ -1593,14 +1594,14 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.tag = {};
+	taxonomyBoxes.view.tag = {};
 
 	/**
 	 * Add-New-Term Form Subview.
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.tag.AddNew = wp.Backbone.View.extend({
+	taxonomyBoxes.view.tag.AddNew = wp.Backbone.View.extend({
 
 		className : 'jaxtag',
 
@@ -1669,9 +1670,9 @@ window.taxBoxes = window.taxBoxes || {};
 				taxonomy : taxonomy,
 				terms    : this.collection.toJSON(),
 				labels   : _.extend(
-					taxLabelsL10n[ taxonomy.slug ] || {}, {
-						add       : taxLabelsL10n.add || '',
-						most_used : taxLabelsL10n.most_used || ''
+					ratbLabelsL10n[ taxonomy.slug ] || {}, {
+						add       : ratbLabelsL10n.add || '',
+						most_used : ratbLabelsL10n.most_used || ''
 					}
 				)
 			} );
@@ -1703,7 +1704,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.tag.Terms = wp.Backbone.View.extend({
+	taxonomyBoxes.view.tag.Terms = wp.Backbone.View.extend({
 
 		className : 'tagchecklist',
 
@@ -1775,7 +1776,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.tag.Cloud = wp.Backbone.View.extend({
+	taxonomyBoxes.view.tag.Cloud = wp.Backbone.View.extend({
 
 		className : 'the-tagcloud-wrapper',
 
@@ -1906,11 +1907,11 @@ window.taxBoxes = window.taxBoxes || {};
 				taxonomy : taxonomy,
 				terms    : this.calculateFontSize( terms ),
 				labels   : _.extend(
-					taxLabelsL10n[ taxonomy.slug ] || {}, {
-						add       : taxLabelsL10n.add || '',
-						most_used : taxLabelsL10n.most_used || '',
-						n_topic   : taxLabelsL10n.n_topic || '',
-						n_topics  : taxLabelsL10n.n_topics || '',
+					ratbLabelsL10n[ taxonomy.slug ] || {}, {
+						add       : ratbLabelsL10n.add || '',
+						most_used : ratbLabelsL10n.most_used || '',
+						n_topic   : ratbLabelsL10n.n_topic || '',
+						n_topics  : ratbLabelsL10n.n_topics || '',
 					}
 				)
 			} );
@@ -1925,7 +1926,7 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @since 1.0
 	 */
-	taxBoxes.view.tag.Box = wp.Backbone.View.extend({
+	taxonomyBoxes.view.tag.Box = wp.Backbone.View.extend({
 
 		template : wp.template( 'tagdiv' ),
 
@@ -1955,9 +1956,9 @@ window.taxBoxes = window.taxBoxes || {};
 		 */
 		setRegions : function() {
 
-			this.addnew = new taxBoxes.view.tag.AddNew( { controller : this.controller } );
-			this.terms  = new taxBoxes.view.tag.Terms( { controller : this.controller } );
-			this.cloud  = new taxBoxes.view.tag.Cloud( { controller : this.controller } );
+			this.addnew = new taxonomyBoxes.view.tag.AddNew( { controller : this.controller } );
+			this.terms  = new taxonomyBoxes.view.tag.Terms( { controller : this.controller } );
+			this.cloud  = new taxonomyBoxes.view.tag.Cloud( { controller : this.controller } );
 
 			this.views.add( '.tagsdiv', this.addnew );
 			this.views.add( '.tagsdiv', this.terms );
@@ -1999,23 +2000,23 @@ window.taxBoxes = window.taxBoxes || {};
 	 *
 	 * @return Returns itself to allow chaining.
 	 */
-	taxBoxes.run = function() {
+	taxonomyBoxes.run = function() {
 
 		var taxonomies = new wp.api.models.Taxonomy,
 		       options = { data : { type : typenow || '' } };
 
 		taxonomies.fetch( options ).done( function( taxonomies ) {
 			_.each( taxonomies, function( taxonomy ) {
-				taxBoxes.boxes[ taxonomy.slug ] = new taxBox( taxonomy );
+				taxonomyBoxes.boxes[ taxonomy.slug ] = new taxBox( taxonomy );
 			} );
 		} );
 
-		return taxBoxes;
+		return taxonomyBoxes;
 	};
 
 }() );
 
 jQuery( document ).ready( function() {
 	// Wait for the client to load.
-	wp.api.loadPromise.done( taxBoxes.run );
+	wp.api.loadPromise.done( taxonomyBoxes.run );
 } );

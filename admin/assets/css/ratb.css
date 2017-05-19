@@ -4,6 +4,15 @@
 	display: table;
 }
 
+ul.category-tabs {
+	margin-bottom: 6px;
+}
+
+.categorydiv .category-panels .tabs {
+	background-color: transparent;
+	border-color: transparent;
+}
+
 .categorydiv .category-panels.all .tab-pop,
 .categorydiv .category-panels.popular .tab-all {
 	background-color: #fdfdfd;
@@ -21,11 +30,12 @@
 	display: none;
 }
 
-.categorydiv .category-tabs {
-	margin-bottom: -2px;
-	max-width: 100%;
-	padding: 8px 0;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
+.tagsdiv .the-tagcloud p {
+	margin: 0;
+}
+
+@media screen and (max-width:782px) {
+	ul.category-tabs {
+		margin-bottom: 14px;
+	}
 }

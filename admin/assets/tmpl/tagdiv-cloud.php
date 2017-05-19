@@ -35,7 +35,14 @@
 
 		<button type="button" id="link-{{ data.taxonomy.slug }}" class="button-link tagcloud-link">{{ data.labels.choose_from_most_used }}</button>
 		<div id="tagcloud-{{ data.taxonomy.slug }}" class="the-tagcloud hidden">
-<# _.each( data.terms, function( term, index ) { #>
+<#
+if ( data.terms.length ) {
+	_.each( data.terms, function( term, index ) { #>
 			<a href="#" data-term-id="{{ term.id }}" class="tag-link tag-link-{{ term.id }} tag-link-position-{{ index }}" title="<# if ( 1 <= term.count ) { #>{{ term.count + ' ' + data.labels.n_topic }}<# } else { #>{{ term.count + ' ' + data.labels.n_topics }}<# } #>" style="font-size: {{ term.fontSize }};">{{ term.name }}</a>
-<# } ); #>
+<#
+	} );
+} else {
+#>
+			<p>{{ data.labels.no_terms }}</p>
+<# } #>
 		</div>

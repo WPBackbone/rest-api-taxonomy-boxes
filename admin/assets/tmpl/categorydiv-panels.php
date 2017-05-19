@@ -35,8 +35,8 @@
 ?>
 
 		<ul id="{{ data.taxonomy.slug }}-tabs" class="category-tabs">
-			<li class="tab tab-pop"><a href="#{{ data.taxonomy.slug }}-all" data-action="all">{{ data.labels.all_items }}</a></li>
-			<li class="tab tab-all "><a href="#{{ data.taxonomy.slug }}-pop" data-action="pop">{{ data.labels.most_used }}</a></li>
+			<li class="tabs tab-pop"><a href="#{{ data.taxonomy.slug }}-all" data-action="all">{{ data.labels.all_items }}</a></li>
+			<li class="tabs tab-all "><a href="#{{ data.taxonomy.slug }}-pop" data-action="pop">{{ data.labels.most_used }}</a></li>
 		</ul>
 
 		<div id="{{ data.taxonomy.slug }}-pop" class="tabs-panel panel-pop"></div>

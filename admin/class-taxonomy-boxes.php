@@ -1,6 +1,6 @@
 <?php
 /**
- * TaxonomyBoxes: \RestApiTaxonomyBoxes\TaxBoxes class.
+ * TaxonomyBoxes: \RestApiTaxonomyBoxes\TaxonomyBoxes class.
  *
  * @package RestApiTaxonomyBoxes\Admin
  * @since   1.0
@@ -74,7 +74,7 @@ class TaxonomyBoxes {
 
 		$path = plugin_dir_url( __FILE__ );
 
-		wp_register_style( 'taxboxes', $path . 'assets/css/taxboxes.css', array(), RATB_VERSION, 'all' );
+		wp_register_style( 'ratb', $path . 'assets/css/ratb.css', array(), RATB_VERSION, 'all' );
 	}
 
 	/**
@@ -90,7 +90,7 @@ class TaxonomyBoxes {
 		$this->register_styles();
 
 		if ( 'post.php' === $hook_suffix || 'post-new.php' === $hook_suffix ) {
-			wp_enqueue_style( 'taxboxes' );
+			wp_enqueue_style( 'ratb' );
 		}
 	}
 
@@ -104,7 +104,7 @@ class TaxonomyBoxes {
 
 		$path = plugin_dir_url( __FILE__ );
 
-		wp_register_script( 'taxboxes', $path . 'assets/js/taxboxes.js', array( 'jquery', 'wp-backbone', 'wp-api' ), RATB_VERSION, true );
+		wp_register_script( 'ratb', $path . 'assets/js/ratb.js', array( 'jquery', 'wp-backbone', 'wp-api' ), RATB_VERSION, true );
 	}
 
 	/**
@@ -120,7 +120,7 @@ class TaxonomyBoxes {
 		$this->register_scripts();
 
 		if ( 'post.php' === $hook_suffix || 'post-new.php' === $hook_suffix ) {
-			wp_enqueue_script( 'taxboxes' );
+			wp_enqueue_script( 'ratb' );
 		}
 	}
 
@@ -148,7 +148,7 @@ class TaxonomyBoxes {
 				$labels[ $taxonomy ] = $taxonomy_object->labels;
 			}
 
-			wp_localize_script( 'taxboxes', 'taxLabelsL10n', $labels );
+			wp_localize_script( 'ratb', 'ratbLabelsL10n', $labels );
 		}
 	}
 
