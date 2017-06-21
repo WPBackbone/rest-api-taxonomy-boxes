@@ -19,7 +19,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-add_action( 'plugins_loaded', 'ratb_110', 9999 );
+add_action( 'init', 'ratb_110', 9999 );
 
 if ( ! function_exists( 'ratb_110' ) ) {
 
