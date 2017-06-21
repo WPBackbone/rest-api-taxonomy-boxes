@@ -168,7 +168,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 			 options = options || {};
 
 			if ( ! options.silent ) {
-				term.save().done( _.bind( function( model ) {
+				term.save( term.attributes, options ).done( _.bind( function( model ) {
 					return this.add( model );
 				}, this ) );
 			}
@@ -673,7 +673,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 				return;
 			}
 
-			var atts = { name : term.name };
+			var atts = _.defaults( term, { name : '', meta : {} } );
 			if ( _.has( modelClass.prototype.args, 'parent' ) ) {
 				var parent = Math.max( 0, parseInt( term.parent ) ) || 0;
 				if ( parent ) {
