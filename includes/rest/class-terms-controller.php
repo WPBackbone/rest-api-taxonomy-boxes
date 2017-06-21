@@ -8,6 +8,7 @@
 
 namespace RestApiTaxonomyBoxes\REST;
 
+use WP_Error;
 use WP_REST_Server;
 use WP_REST_Terms_Controller;
 
@@ -237,6 +238,91 @@ class Terms_Controller extends WP_REST_Terms_Controller {
 
 			$response->link_header( 'next', $next_link );
 		}
+
+		return $response;
+	}
+
+	/**
+	 * Creates a single term in a taxonomy.
+	 *
+	 * Replace WP_REST_Terms_Controller::create_item() to fix a missing term
+	 * ID causing PHP Notice in capabilities check.
+	 *
+	 * @see https://core.trac.wordpress.org/ticket/40889
+	 * @see https://core.trac.wordpress.org/ticket/40891
+	 *
+	 * @since 1.2.0
+	 * @access public
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
+	 */
+	public function create_item( $request ) {
+		if ( isset( $request['parent'] ) ) {
+			if ( ! is_taxonomy_hierarchical( $this->taxonomy ) ) {
+				return new WP_Error( 'rest_taxonomy_not_hierarchical', __( 'Cannot set parent term, taxonomy is not hierarchical.' ), array( 'status' => 400 ) );
+			}
+
+			$parent = get_term( (int) $request['parent'], $this->taxonomy );
+
+			if ( ! $parent ) {
+				return new WP_Error( 'rest_term_invalid', __( 'Parent term does not exist.' ), array( 'status' => 400 ) );
+			}
+		}
+
+		$prepared_term = $this->prepare_item_for_database( $request );
+
+		$term = wp_insert_term( wp_slash( $prepared_term->name ), $this->taxonomy, wp_slash( (array) $prepared_term ) );
+		if ( is_wp_error( $term ) ) {
+			/*
+			 * If we're going to inform the client that the term already exists,
+			 * give them the identifier for future use.
+			 */
+			if ( $term_id = $term->get_error_data( 'term_exists' ) ) {
+				$existing_term = get_term( $term_id, $this->taxonomy );
+				$term->add_data( $existing_term->term_id, 'term_exists' );
+			}
+
+			return $term;
+		}
+
+		$term = get_term( $term['term_id'], $this->taxonomy );
+
+		/**
+		 * Fires after a single term is created or updated via the REST API.
+		 *
+		 * The dynamic portion of the hook name, `$this->taxonomy`, refers to the taxonomy slug.
+		 *
+		 * @since 4.7.0
+		 *
+		 * @param WP_Term         $term     Inserted or updated term object.
+		 * @param WP_REST_Request $request  Request object.
+		 * @param bool            $creating True when creating a term, false when updating.
+		 */
+		do_action( "rest_insert_{$this->taxonomy}", $term, $request, true );
+
+		$schema = $this->get_item_schema();
+		if ( ! empty( $schema['properties']['meta'] ) && isset( $request['meta'] ) ) {
+			$meta_update = $this->meta->update_value( $request['meta'], $term->term_id );
+
+			if ( is_wp_error( $meta_update ) ) {
+				return $meta_update;
+			}
+		}
+
+		$fields_update = $this->update_additional_fields_for_object( $term, $request );
+
+		if ( is_wp_error( $fields_update ) ) {
+			return $fields_update;
+		}
+
+		$request->set_param( 'context', 'view' );
+
+		$response = $this->prepare_item_for_response( $term, $request );
+		$response = rest_ensure_response( $response );
+
+		$response->set_status( 201 );
+		$response->header( 'Location', rest_url( $this->namespace . '/' . $this->rest_base . '/' . $term->term_id ) );
 
 		return $response;
 	}
