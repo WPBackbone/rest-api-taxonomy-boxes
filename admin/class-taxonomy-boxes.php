@@ -3,7 +3,7 @@
  * TaxonomyBoxes: \RestApiTaxonomyBoxes\TaxonomyBoxes class.
  *
  * @package RestApiTaxonomyBoxes\Admin
- * @since   1.0
+ * @since   1.0.0
  */
 
 namespace RestApiTaxonomyBoxes\Admin;
@@ -17,15 +17,15 @@ use RestApiTaxonomyBoxes\REST;
  * Also override the default REST API routes for taxonomies and filter the query
  * arguments and collection parameters.
  *
- * @since 1.0
+ * @since 1.0.0
  * @access public
  */
-class TaxonomyBoxes {
+final class TaxonomyBoxes {
 
 	/**
 	 * Initialize.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access private
 	 */
 	private function init() {
@@ -36,7 +36,7 @@ class TaxonomyBoxes {
 	/**
 	 * Register actions and filters.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access private
 	 */
 	private function register_hooks() {
@@ -67,7 +67,7 @@ class TaxonomyBoxes {
 	/**
 	 * Register the required styles.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access private
 	 */
 	private function register_styles() {
@@ -80,7 +80,7 @@ class TaxonomyBoxes {
 	/**
 	 * Enqueue admin styles.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 *
 	 * @param string $hook_suffix The current admin page.
@@ -97,7 +97,7 @@ class TaxonomyBoxes {
 	/**
 	 * Register the required scripts.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access private
 	 */
 	private function register_scripts() {
@@ -110,7 +110,7 @@ class TaxonomyBoxes {
 	/**
 	 * Enqueue admin scripts.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 *
 	 * @param string $hook_suffix The current admin page.
@@ -127,7 +127,7 @@ class TaxonomyBoxes {
 	/**
 	 * Localize scripts.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 *
 	 * @param string $hook_suffix The current admin page.
@@ -158,7 +158,7 @@ class TaxonomyBoxes {
 	 * The template slug must match the template's filename without the
 	 * extension.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access private
 	 *
 	 * @param string $template_id Template slug.
@@ -185,7 +185,7 @@ class TaxonomyBoxes {
 	/**
 	 * Print the required JavaScript templates.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 */
 	public function print_templates() {
@@ -206,7 +206,7 @@ class TaxonomyBoxes {
 	 * Replace each taxonomy REST Controller class with an updated
 	 * Controller class.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 */
 	public function register_routes() {
@@ -225,7 +225,7 @@ class TaxonomyBoxes {
 	/**
 	 * Filter registered taxonomies to replace defaults metaboxes.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 *
 	 * @param string $taxonomy Taxonomy slug.
@@ -255,7 +255,7 @@ class TaxonomyBoxes {
 	/**
 	 * Replace the default hierarchical taxonomies metabox.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 *
 	 * @param WP_Post $post Post object.
@@ -305,7 +305,7 @@ class TaxonomyBoxes {
 	/**
 	 * Replace the default non-hierarchical taxonomies metabox.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 *
 	 * @param WP_Post $post Post object.
@@ -353,7 +353,7 @@ class TaxonomyBoxes {
 	 * terms. The default parameters only allow a minimum of one to be returned
 	 * and we need to bypass that to generate a proper tagbox.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 *
 	 * @param array       $query_params JSON Schema-formatted collection parameters.
@@ -376,7 +376,7 @@ class TaxonomyBoxes {
 	 * If int(0) is set as number parameters, adjust arguments to query all
 	 * existing terms.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 *
 	 * @param array           $prepared_args Array of arguments to be passed to get_terms().
@@ -398,7 +398,7 @@ class TaxonomyBoxes {
 	/**
 	 * Run Forrest, run!
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @access public
 	 */
 	public function run() {

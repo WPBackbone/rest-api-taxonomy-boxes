@@ -21,29 +21,28 @@
 
 add_action( 'plugins_loaded', 'ratb_110', 9999 );
 
-/**
- * Let the fun begin.
- *
- * @since 1.1.0
- * @access public
- */
-function ratb_110() {
+if ( ! function_exists( 'ratb_110' ) ) {
 
-	// If not in the admin, bail.
-	if ( ! is_admin() ) {
-		return;
+	/**
+	 * Let the fun begin.
+	 *
+	 * @since 1.1.0
+	 * @access public
+	 */
+	function ratb_110() {
+
+		// Let's load!
+		if ( ! defined( 'RATB_LOADED' ) ) {
+
+			define( 'RATB_LOADED',   true );
+			define( 'RATB_VERSION', '1.1.0' );
+
+			require_once trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/rest/class-terms-controller.php';
+			require_once trailingslashit( plugin_dir_path( __FILE__ ) ) . 'admin/class-taxonomy-boxes.php';
+
+			$ratb = new \RestApiTaxonomyBoxes\Admin\TaxonomyBoxes();
+			$ratb->run();
+		}
 	}
 
-	// If Haricot hasn't been loaded, let's load it.
-	if ( ! defined( 'RATB_LOADED' ) ) {
-
-		define( 'RATB_LOADED',   true );
-		define( 'RATB_VERSION', '1.1.0' );
-
-		require_once trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/rest/class-terms-controller.php';
-		require_once trailingslashit( plugin_dir_path( __FILE__ ) ) . 'admin/class-taxonomy-boxes.php';
-
-		$ratb = new \RestApiTaxonomyBoxes\Admin\TaxonomyBoxes();
-		$ratb->run();
-	}
 }
