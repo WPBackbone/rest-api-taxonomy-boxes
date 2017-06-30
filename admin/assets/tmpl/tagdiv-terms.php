@@ -11,7 +11,10 @@
  *     @type    array     terms List of term models.
  *
  * }
+ *
+ * @package RestApiTaxonomyBoxes
  */
+
 ?>
 
 <# _.each( data.terms, function( term, index ) { #>

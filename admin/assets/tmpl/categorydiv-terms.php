@@ -34,7 +34,10 @@
  *     @type    object    labels Taxonomy labels.
  *
  * }
+ *
+ * @package RestApiTaxonomyBoxes
  */
+
 ?>
 
 			<input name="tax_input[{{ data.taxonomy.slug }}][]" value="0" type="hidden">

@@ -31,7 +31,10 @@
  *     @type    object    labels Taxonomy labels.
  *
  * }
+ *
+ * @package RestApiTaxonomyBoxes
  */
+
 ?>
 
 		<ul id="{{ data.taxonomy.slug }}-tabs" class="category-tabs">

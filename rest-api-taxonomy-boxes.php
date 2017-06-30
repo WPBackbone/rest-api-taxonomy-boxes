@@ -22,7 +22,6 @@
 add_action( 'init', 'ratb_110', 9999 );
 
 if ( ! function_exists( 'ratb_110' ) ) {
-
 	/**
 	 * Let the fun begin.
 	 *
@@ -40,9 +39,8 @@ if ( ! function_exists( 'ratb_110' ) ) {
 			require_once trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/rest/class-terms-controller.php';
 			require_once trailingslashit( plugin_dir_path( __FILE__ ) ) . 'admin/class-taxonomy-boxes.php';
 
-			$ratb = new \RestApiTaxonomyBoxes\Admin\TaxonomyBoxes();
+			$ratb = new \RestApiTaxonomyBoxes\Admin\Taxonomy_Boxes();
 			$ratb->run();
 		}
 	}
-
 }

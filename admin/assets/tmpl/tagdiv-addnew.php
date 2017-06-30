@@ -28,7 +28,10 @@
  *     @type    object    labels Taxonomy labels.
  *
  * }
+ *
+ * @package RestApiTaxonomyBoxes
  */
+
 ?>
 
 		<div class="nojs-tags hidden">

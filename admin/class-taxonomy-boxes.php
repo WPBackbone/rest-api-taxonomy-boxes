@@ -20,7 +20,7 @@ use RestApiTaxonomyBoxes\REST;
  * @since 1.0.0
  * @access public
  */
-final class TaxonomyBoxes {
+final class Taxonomy_Boxes {
 
 	/**
 	 * Initialize.
@@ -243,9 +243,9 @@ final class TaxonomyBoxes {
 			return false;
 		}
 
-		if ( 'post_categories_meta_box' == $taxonomy_object->meta_box_cb ) {
+		if ( 'post_categories_meta_box' === $taxonomy_object->meta_box_cb ) {
 			$taxonomy_object->meta_box_cb = array( $this, 'post_categories_meta_box' );
-		} elseif ( 'post_tags_meta_box' == $taxonomy_object->meta_box_cb ) {
+		} elseif ( 'post_tags_meta_box' === $taxonomy_object->meta_box_cb ) {
 			$taxonomy_object->meta_box_cb = array( $this, 'post_tags_meta_box' );
 		}
 
@@ -287,7 +287,7 @@ final class TaxonomyBoxes {
 
 			<div id="<?php echo $tax_name; ?>-all" class="tabs-panel">
 				<?php
-				$name = ( $tax_name == 'category' ) ? 'post_category' : 'tax_input[' . $tax_name . ']';
+				$name = ( $tax_name === 'category' ) ? 'post_category' : 'tax_input[' . $tax_name . ']';
 				echo "<input type='hidden' name='{$name}[]' value='0' />"; // Allows for an empty term set to be sent. 0 is an invalid Term ID and will be ignored by empty() checks.
 				?>
 				<ul id="<?php echo $tax_name; ?>checklist" data-wp-lists="list:<?php echo $tax_name; ?>" class="categorychecklist form-no-clear">

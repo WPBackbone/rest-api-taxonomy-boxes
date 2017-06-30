@@ -30,7 +30,10 @@
  *     @type    object    labels Taxonomy labels.
  *
  * }
+ *
+ * @package RestApiTaxonomyBoxes
  */
+
 ?>
 
 		<button type="button" id="link-{{ data.taxonomy.slug }}" class="button-link tagcloud-link">{{ data.labels.choose_from_most_used }}</button>

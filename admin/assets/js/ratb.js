@@ -1,8 +1,10 @@
 /**
  * Build the TaxonomyBoxes object.
  *
- * @since 1.0
+ * @since 1.0.0
  * @access public
+ *
+ * @package RestApiTaxonomyBoxes\Admin
  */
 
 window.taxonomyBoxes = window.taxonomyBoxes || {};
@@ -12,7 +14,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Create a new taxonomy box object.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 *
 	 * @param {object} taxonomy Taxonomy model.
 	 *
@@ -58,14 +60,14 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Add a set of useful functions to prototype.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	_.extend( taxBox.prototype, {
 
 		/**
 		 * Retrieve a specific term by its ID.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {int} term_id Term ID.
 		 *
@@ -83,7 +85,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Check if a specific term exists.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {int} term_id Term ID.
 		 *
@@ -97,7 +99,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Retrieve a specific term by its name or slug.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {string} term Term name or slug.
 		 *
@@ -121,7 +123,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Add a new term.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {array|object} term Term data object or array of term data objects.
 		 * @param {object} options Options.
@@ -136,7 +138,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Remove a specific term.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {int} term_id Term ID.
 		 * @param {object} options Options.
@@ -155,7 +157,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Create a new term.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} term Term data.
 		 * @param {object} options Options.
@@ -179,7 +181,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Delete a specific term.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {int} term_id Term ID.
 		 * @param {object} options Options.
@@ -195,7 +197,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 			var term = this.controller.terms.get( term_id );
 
 			// Required to delete terms.
-			// See https://core.trac.wordpress.org/ticket/40672
+			// See https://core.trac.wordpress.org/ticket/40672.
 			term.requireForceForDelete = true;
 
 			return term.destroy();
@@ -204,7 +206,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Filter the list of terms.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options Filtering options.
 		 *
@@ -218,7 +220,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Get the complete list of terms.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options Options.
 		 *
@@ -232,7 +234,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Get the list of popular terms.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options Options.
 		 *
@@ -246,7 +248,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Get the list of selected terms.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options Options.
 		 *
@@ -260,7 +262,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Add term(s) to the selected terms list.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {int|array} term Term ID, object or array of term objects.
 		 * @param {object} options Options.
@@ -295,7 +297,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Remove term(s) from the selected terms list.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {int|array} term Term ID, object or array of term objects.
 		 * @param {object} options Options.
@@ -330,7 +332,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Save the selected terms list.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options Options.
 		 *
@@ -361,7 +363,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Empty the selected terms list.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options Options.
 		 *
@@ -375,7 +377,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Reset the taxBox.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options Options.
 		 *
@@ -395,7 +397,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	 *
 	 * Store controllers, views and boxes objects.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes = {
 
@@ -405,7 +407,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * This should not be used directly. Use taxonomyBoxes.get()
 		 * instead.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @var object
 		 */
@@ -414,7 +416,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * List of taxonomies controllers.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @var object
 		 */
@@ -423,7 +425,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * List of taxonomies views.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @var object
 		 */
@@ -432,7 +434,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * TaxonomyBoxes util functions.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @var object
 		 */
@@ -442,7 +444,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 			 * Find a wp.api.models Class from a taxonomy
 			 * slug.
 			 *
-			 * @since 1.0
+			 * @since 1.0.0
 			 *
 			 * @param {string} slug Taxonomy Model slug.
 			 *
@@ -467,7 +469,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 			 * Find a wp.api.collections Class from a taxonomy
 			 * rest_base.
 			 *
-			 * @since 1.0
+			 * @since 1.0.0
 			 *
 			 * @param {string} rest_base Taxonomy Collection rest_base.
 			 *
@@ -493,7 +495,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Retrieve a Taxonomy Controller.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {string} taxonomy Taxonomy slug.
 		 *
@@ -512,7 +514,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Main Taxonomy Box Controller.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.controller.taxonomyBox = Backbone.Model.extend({
 
@@ -522,7 +524,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * Called after taxonomies were fetched and 'all'/'pop' collections
 		 * were set.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -534,7 +536,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Set the required terms collections.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -557,7 +559,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 *
 		 * Once all terms are retrieved, populate the popular terms list.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options Query parameters.
 		 *
@@ -588,7 +590,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Fetch the current Post terms.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options Query parameters.
 		 *
@@ -614,7 +616,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Set a Term as selected.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {int} term_id Term ID.
 		 *
@@ -637,7 +639,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Remove a Term from the selected collection.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {int} term_id Term ID.
 		 *
@@ -660,7 +662,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Create a new term.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} term New Term.
 		 *
@@ -697,7 +699,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * terms collection. If not, create a new term and add it to both
 		 * collections.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} model New Term Model.
 		 *
@@ -729,14 +731,14 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Hierarchical (Category-like) Taxonomies Controller.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.controller.categoryBox = taxonomyBoxes.controller.taxonomyBox.extend({
 
 		/**
 		 * Initialize the Controller.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} attributes Controller parameters.
 		 * @param {object} options Controller options.
@@ -754,7 +756,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Populate the popular terms list.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -777,7 +779,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Set a Term as selected, with context.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {int} term_id Term ID.
 		 * @param {string} context Context, 'all' or 'pop'.
@@ -801,7 +803,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Remove a Term from the selected collection, with context.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {int} term_id Term ID.
 		 * @param {string} context Context, 'all' or 'pop'.
@@ -827,14 +829,14 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Non-hierarchical (Tag-like) Taxonomies Controller.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.controller.tagBox = taxonomyBoxes.controller.taxonomyBox.extend({
 
 		/**
 		 * Initialize the Controller.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} attributes Controller parameters.
 		 * @param {object} options Controller options.
@@ -852,7 +854,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Set the required terms collections.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -868,7 +870,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Fetch the current Post terms.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param  {object} options Query parameters.
 		 *
@@ -895,7 +897,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Populate the popular terms list.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -920,14 +922,14 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Hierarchical (Category-like) Taxonomies main View.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.category = {};
 
 	/**
 	 * All Terms Panel Subview.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.category.Panel = wp.Backbone.View.extend({
 
@@ -940,7 +942,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Initialize the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 */
@@ -955,7 +957,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Set a Term as (un)selected.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} e 'click' Event.
 		 *
@@ -982,7 +984,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * the options parameter to avoid rendering both lists when
 		 * only one should be.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} model Term model.
 		 * @param {object} collection Collection of selected terms.
@@ -1005,7 +1007,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * THe returned options will be passed to the template
 		 * function prior to rendering.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 *
@@ -1029,7 +1031,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * All Terms Panel Subview.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.category.Terms = taxonomyBoxes.view.category.Panel.extend({
 
@@ -1044,7 +1046,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Initialize the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 */
@@ -1067,7 +1069,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * through the child terms and set them as children of
 		 * their parent terms by appending submenus to the list.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1102,7 +1104,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * Move all selected terms to the top of the list and
 		 * remove the resulting empty children lists.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1129,7 +1131,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Render the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1151,7 +1153,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Popular Terms Panel Subview.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.category.Popular = taxonomyBoxes.view.category.Panel.extend({
 
@@ -1166,7 +1168,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Initialize the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 */
@@ -1185,7 +1187,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * THe returned options will be passed to the template
 		 * function prior to rendering.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 *
@@ -1206,7 +1208,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Terms Panels Subview.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.category.Panels = wp.Backbone.View.extend({
 
@@ -1222,7 +1224,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Initialize the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 */
@@ -1236,7 +1238,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Set the subviews.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1254,7 +1256,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Toggle the 'all' Tab.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} e 'click' Event.
 		 *
@@ -1272,7 +1274,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Toggle the 'pop' Tab.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} e 'click' Event.
 		 *
@@ -1293,7 +1295,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * THe returned options will be passed to the template
 		 * function prior to rendering.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 *
@@ -1318,7 +1320,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Render the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1346,7 +1348,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Add-New-Term Form Subview.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.category.AddNew = wp.Backbone.View.extend({
 
@@ -1362,7 +1364,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Initialize the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 */
@@ -1382,7 +1384,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * The AddNew View is hidden by default. Put the text field
 		 * on focus when unhiding.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} e 'click' Event.
 		 *
@@ -1407,7 +1409,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Submit a new term.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1434,7 +1436,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * through the child terms and set them as children of
 		 * their parent terms.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1471,7 +1473,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * THe returned options will be passed to the template
 		 * function prior to rendering.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 *
@@ -1499,7 +1501,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Render the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1522,7 +1524,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Main Hierarchical Taxonomies View.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.category.Box = wp.Backbone.View.extend({
 
@@ -1535,7 +1537,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Initialize the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 */
@@ -1551,7 +1553,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Set the subviews.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1572,7 +1574,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * THe returned options will be passed to the template
 		 * function prior to rendering.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 *
@@ -1592,14 +1594,14 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Non-hierarchical (Tag-like) Taxonomies main View.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.tag = {};
 
 	/**
 	 * Add-New-Term Form Subview.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.tag.AddNew = wp.Backbone.View.extend({
 
@@ -1614,7 +1616,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Initialize the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 */
@@ -1629,7 +1631,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Add new terms to the collection.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1657,7 +1659,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * THe returned options will be passed to the template
 		 * function prior to rendering.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 *
@@ -1683,7 +1685,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Render the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1702,7 +1704,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * All Terms Subview.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.tag.Terms = wp.Backbone.View.extend({
 
@@ -1717,7 +1719,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Initialize the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 */
@@ -1732,7 +1734,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Remove a term from the collection.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} event JS 'click' Event.
 		 *
@@ -1754,7 +1756,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * THe returned options will be passed to the template
 		 * function prior to rendering.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 *
@@ -1774,7 +1776,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * TagCloud Subview.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.tag.Cloud = wp.Backbone.View.extend({
 
@@ -1790,7 +1792,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Initialize the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 */
@@ -1805,7 +1807,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Show/Hide the TagCloud.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1819,7 +1821,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Add a term to the collection.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} event JS 'click' Event.
 		 *
@@ -1849,7 +1851,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * @see wp_generate_tag_cloud()
 		 * @see default_topic_count_scale()
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {array} terms Collection of term objects.
 		 * @param {object} options Calculation options.
@@ -1891,7 +1893,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * THe returned options will be passed to the template
 		 * function prior to rendering.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 *
@@ -1924,7 +1926,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	/**
 	 * Main Non-hierarchical Taxonomies View.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	taxonomyBoxes.view.tag.Box = wp.Backbone.View.extend({
 
@@ -1933,7 +1935,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Initialize the View.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 */
@@ -1950,7 +1952,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		/**
 		 * Set the subviews.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @return Returns itself to allow chaining.
 		 */
@@ -1973,7 +1975,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		 * THe returned options will be passed to the template
 		 * function prior to rendering.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 *
 		 * @param {object} options View options.
 		 *
@@ -1996,7 +1998,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	 * Fetch the current post type allowed taxonomies and create the
 	 * corresponding controllers and views.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 *
 	 * @return Returns itself to allow chaining.
 	 */

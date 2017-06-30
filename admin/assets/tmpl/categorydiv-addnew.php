@@ -30,7 +30,10 @@
  *     @type    object    labels Taxonomy labels.
  *
  * }
+ *
+ * @package RestApiTaxonomyBoxes
  */
+
 ?>
 
 		<a id="{{ data.taxonomy.slug }}-add-toggle" href="#{{ data.taxonomy.slug }}-add" data-action="add-toggle" class="hide-if-no-js taxonomy-add-new">+ {{ data.labels.add_new_item }}</a>

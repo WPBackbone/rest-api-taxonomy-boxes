@@ -32,7 +32,10 @@
  *     @type    object    labels Taxonomy labels.
  *
  * }
+ *
+ * @package RestApiTaxonomyBoxes
  */
+
 ?>
 
 			<ul id="{{ data.taxonomy.slug }}checklist-pop" class="categorychecklist form-no-clear">

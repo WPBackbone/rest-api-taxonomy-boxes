@@ -26,7 +26,10 @@
  *     }
  *
  * }
+ *
+ * @package RestApiTaxonomyBoxes
  */
+
 ?>
 
 	<div id="taxonomy-{{ data.taxonomy.slug }}" class="tagsdiv"></div>
