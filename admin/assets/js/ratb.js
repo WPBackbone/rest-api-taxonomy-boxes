@@ -1055,8 +1055,8 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 			this.collection = this.controller.terms;
 			this.taxonomy   = this.controller.taxonomy;
 
-			this.listenTo( this.collection, 'update', this.render );
-			this.listenTo( this.selected,   'update', this.render );
+			this.listenTo( this.collection, 'update reset', this.render );
+			this.listenTo( this.selected,   'update reset', this.render );
 		},
 
 		/**
@@ -1176,7 +1176,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 
 			this.collection = this.controller.popular;
 
-			this.listenTo( this.collection, 'update', this.render );
+			this.listenTo( this.collection, 'update reset', this.render );
 		},
 
 		/**
@@ -1372,8 +1372,8 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 			this.collection = this.controller.terms;
 			this.selected   = this.controller.selected;
 
-			this.listenTo( this.collection, 'update', this.render );
-			this.listenTo( this.selected,   'update', this.render );
+			this.listenTo( this.collection, 'update reset', this.render );
+			this.listenTo( this.selected,   'update reset', this.render );
 		},
 
 		/**
@@ -1623,7 +1623,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 			this.controller = options.controller;
 			this.collection = this.controller.selected;
 
-			this.listenTo( this.collection, 'update', this.render );
+			this.listenTo( this.collection, 'update reset', this.render );
 		},
 
 		/**
@@ -1726,7 +1726,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 			this.controller = options.controller;
 			this.collection = this.controller.selected;
 
-			this.listenTo( this.collection, 'update', this.render );
+			this.listenTo( this.collection, 'update reset', this.render );
 		},
 
 		/**
