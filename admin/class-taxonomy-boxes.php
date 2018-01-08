@@ -49,19 +49,9 @@ final class Taxonomy_Boxes {
 		add_action( 'admin_footer-post-new.php', array( $this, 'print_templates' ) );
 
 		add_action( 'rest_api_init', array( $this, 'register_routes' ), 99 );
+		add_action( 'rest_api_init', array( $this, 'register_taxonomies_filters' ), 99 );
 
 		add_action( 'registered_taxonomy', array( $this, 'registered_taxonomy' ), 99 );
-
-		// Only supported public, rest-enabled taxonomies.
-		$taxonomies = get_taxonomies( array(
-			'public'       => true,
-			'show_in_rest' => true,
-		) );
-
-		foreach ( $taxonomies as $taxonomy ) {
-			add_filter( "rest_{$taxonomy}_collection_params", array( $this, 'rest_taxonomy_collection_params' ), 10, 2 );
-			add_filter( "rest_{$taxonomy}_query",             array( $this, 'rest_taxonomy_query' ), 10, 2 );
-		}
 	}
 
 	/**
@@ -203,8 +193,7 @@ final class Taxonomy_Boxes {
 	}
 
 	/**
-	 * Replace each taxonomy REST Controller class with an updated
-	 * Controller class.
+	 * Register custom taxonomy REST Controller class and routes.
 	 *
 	 * @since 1.0.0
 	 * @access public
@@ -219,6 +208,26 @@ final class Taxonomy_Boxes {
 		foreach ( $taxonomies as $taxonomy ) {
 			$controller = new REST\Terms_Controller( $taxonomy );
 			$controller->register_routes();
+		}
+	}
+
+	/**
+	 * Register custom taxonomy REST Controller class and routes.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function register_taxonomies_filters() {
+
+		// Only supported public, rest-enabled taxonomies.
+		$taxonomies = get_taxonomies( array(
+			'public'       => true,
+			'show_in_rest' => true,
+		) );
+
+		foreach ( $taxonomies as $taxonomy ) {
+			add_filter( "rest_{$taxonomy}_collection_params", array( $this, 'rest_taxonomy_collection_params' ), 10, 2 );
+			add_filter( "rest_{$taxonomy}_query",             array( $this, 'rest_taxonomy_query' ), 10, 2 );
 		}
 	}
 
@@ -385,6 +394,10 @@ final class Taxonomy_Boxes {
 	 * @return array
 	 */
 	public function rest_taxonomy_query( $prepared_args, $request ) {
+
+		if ( 'edit' !== $request['context'] ) {
+			return $prepared_args;
+		}
 
 		$number = absint( $request['number'] );
 		if ( 0 === $number ) {

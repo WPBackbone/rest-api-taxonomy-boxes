@@ -11,6 +11,7 @@ namespace RestApiTaxonomyBoxes\REST;
 use WP_Error;
 use WP_REST_Server;
 use WP_REST_Terms_Controller;
+use WP_REST_Term_Meta_Fields;
 
 /**
  * Class used to manage terms associated with a taxonomy via the REST API.
@@ -25,6 +26,24 @@ use WP_REST_Terms_Controller;
  * @see WP_REST_Terms_Controller
  */
 class Terms_Controller extends WP_REST_Terms_Controller {
+
+	/**
+	 * Constructor.
+	 *
+	 * @since 1.1.0
+	 * @access public
+	 *
+	 * @param string $taxonomy Taxonomy key.
+	 */
+	public function __construct( $taxonomy ) {
+
+		$this->taxonomy = $taxonomy;
+		$this->namespace = 'ratb/v1';
+		$tax_obj = get_taxonomy( $taxonomy );
+		$this->rest_base = ! empty( $tax_obj->rest_base ) ? $tax_obj->rest_base : $tax_obj->name;
+
+		$this->meta = new WP_REST_Term_Meta_Fields( $taxonomy );
+	}
 
 	/**
 	 * Registers the routes for the objects of the controller.
@@ -258,6 +277,7 @@ class Terms_Controller extends WP_REST_Terms_Controller {
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
 	 */
 	public function create_item( $request ) {
+
 		if ( isset( $request['parent'] ) ) {
 			if ( ! is_taxonomy_hierarchical( $this->taxonomy ) ) {
 				return new WP_Error( 'rest_taxonomy_not_hierarchical', __( 'Cannot set parent term, taxonomy is not hierarchical.' ), array( 'status' => 400 ) );

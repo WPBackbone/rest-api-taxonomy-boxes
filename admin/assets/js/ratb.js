@@ -441,7 +441,7 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		utils : {
 
 			/**
-			 * Find a wp.api.models Class from a taxonomy
+			 * Find a taxonomyBoxes.api.get( 'models' ) Class from a taxonomy
 			 * slug.
 			 *
 			 * @since 1.0.0
@@ -458,15 +458,15 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 					className = 'Tag';
 				}
 
-				if ( _.has( wp.api.models, className ) ) {
-					return wp.api.models[ className ];
+				if ( _.has( taxonomyBoxes.api.get( 'models' ), className ) ) {
+					return taxonomyBoxes.api.get( 'models' )[ className ];
 				}
 
 				return false;
 			},
 
 			/**
-			 * Find a wp.api.collections Class from a taxonomy
+			 * Find a taxonomyBoxes.api.get( 'collections' ) Class from a taxonomy
 			 * rest_base.
 			 *
 			 * @since 1.0.0
@@ -483,8 +483,8 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 					className = 'Tags';
 				}
 
-				if ( _.has( wp.api.collections, className ) ) {
-					return wp.api.collections[ className ];
+				if ( _.has( taxonomyBoxes.api.get( 'collections' ), className ) ) {
+					return taxonomyBoxes.api.get( 'collections' )[ className ];
 				}
 
 				return false;
@@ -576,7 +576,9 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 					// Load all terms.
 					number     : 0,
 					// Including terms without any post.
-					hide_empty : false
+					hide_empty : false,
+					// Editing context.
+					context : 'edit',
 				}
 			} );
 
@@ -605,8 +607,9 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 			var post_id = this.get( 'post_id' );
 			this.selected.fetch( _.extend( options || {}, {
 				data : {
-					number : 0,
-					post   : post_id
+					number  : 0,
+					post    : post_id,
+					context : 'edit',
 				}
 			} ) );
 
@@ -1993,16 +1996,14 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 	});
 
 	/**
-	 * Run Forrest, run!
-	 *
 	 * Fetch the current post type allowed taxonomies and create the
 	 * corresponding controllers and views.
 	 *
-	 * @since 1.0.0
+	 * @since 1.2.0
 	 *
 	 * @return Returns itself to allow chaining.
 	 */
-	taxonomyBoxes.run = function() {
+	taxonomyBoxes.load = function() {
 
 		var taxonomies = new wp.api.models.Taxonomy,
 		       options = { data : { type : typenow || '' } };
@@ -2016,9 +2017,33 @@ window.taxonomyBoxes = window.taxonomyBoxes || {};
 		return taxonomyBoxes;
 	};
 
+	/**
+	 * Run Forrest, run!
+	 *
+	 * Set custom API Endpoint before starting the run.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return Returns itself to allow chaining.
+	 */
+	taxonomyBoxes.run = function() {
+
+		var endpoint = wp.api.endpoints.where( { versionString : 'ratb/v1/' } );
+		if ( ! endpoint.length ) {
+			console.error( 'Error: couldn\'t load wp.api client for REST namespace "ratb/v1".' );
+			return false;
+		}
+
+		taxonomyBoxes.api = _.first( endpoint );
+
+		taxonomyBoxes.load();
+
+		return taxonomyBoxes;
+	};
+
 }() );
 
 jQuery( document ).ready( function() {
 	// Wait for the client to load.
-	wp.api.loadPromise.done( taxonomyBoxes.run );
+	wp.api.init( { versionString : 'ratb/v1/' } ).done( taxonomyBoxes.run );
 } );

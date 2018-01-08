@@ -11,7 +11,7 @@
  * Plugin Name: REST API Taxonomy Boxes
  * Plugin URI:  https://talyes.in/rest-api-taxonomy-boxes/
  * Description: Update the default WordPress Taxonomy Meta Boxes to use Backbone.js and the REST API.
- * Version:     1.1.0
+ * Version:     1.2.0
  * Author:      Talyes.in
  * Author URI:  https://talyes.in/
  * Text Domain: rest-api-taxonomy-boxes
@@ -19,22 +19,22 @@
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-add_action( 'init', 'ratb_110', 9999 );
+add_action( 'init', 'ratb_120', 9999 );
 
-if ( ! function_exists( 'ratb_110' ) ) {
+if ( ! function_exists( 'ratb_120' ) ) {
 	/**
 	 * Let the fun begin.
 	 *
 	 * @since 1.1.0
 	 * @access public
 	 */
-	function ratb_110() {
+	function ratb_120() {
 
 		// Let's load!
 		if ( ! defined( 'RATB_LOADED' ) ) {
 
 			define( 'RATB_LOADED',   true );
-			define( 'RATB_VERSION', '1.1.0' );
+			define( 'RATB_VERSION', '1.2.0' );
 
 			require_once trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/rest/class-terms-controller.php';
 			require_once trailingslashit( plugin_dir_path( __FILE__ ) ) . 'admin/class-taxonomy-boxes.php';
